@@ -1,0 +1,113 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>{{titulo}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link rel="stylesheet" href="sweetalert2.min.css">
+
+	</head>
+	<body class="img js-fullheight" style="background-image: url(/images/botellasmix.jpeg);">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">ValiCor</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<h3 class="mb-4 text-center">Bienvenido</h3>
+				
+		      	<form class="signin-form" id="login-form">
+		      		<div class="form-group">
+		      			<input type="text" class="form-control" placeholder="Email" name="email" id="email"  >
+		      		</div>
+	            <div class="form-group">
+	              <input  type="password" class="form-control" placeholder="Contraseña" name="pass" id="pass" >
+	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+	            </div>
+	            <div class="form-group">
+					<a href="/proveedores"><button type="submit" class="form-control btn btn-primary submit px-3">Ingresar</button></a>
+	            </div>
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50">
+		            	<label class="checkbox-wrap checkbox-primary">Recordarme
+							<input type="checkbox" checked>
+								<span class="checkmark"></span>
+						</label>
+					</div>
+					<div class="w-50 text-md-right">
+						<a href="#" style="color: #fff">Olvidó Contraseña?</a><br>
+					</div><br>
+	            </div>
+				<div class="card-footer">
+					<div class="d-flex justify-content-center links">
+						<a href="/registrarse">Registrarse?</a>
+					</div>
+	            </form>
+	          
+		      </div>
+			 </div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		const expresionEmail = 	/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
+		const expresionPassword = /^[0-9]{2}[a-zA-Z]{4}$/
+
+		const form = document.querySelector('#login-form');
+
+
+		form.addEventListener('submit' , e => {
+			e.preventDefault();
+			const email = e.target.email.value;
+			const pass = e.target.pass.value;
+
+			try{
+				if(email == '' || pass == ''){
+					throw ' No se admiten campos vacíos';
+				}
+				if(	!expresionEmail.test(email)){
+					throw ' Email no cumple con el formato';
+					
+				}
+				if(!expresionPassword.test(pass)){
+					throw ' Password no cumple con el formato';
+					
+				}
+
+				window.location.href = '/proveedores';
+
+			}catch(e){				
+					Swal.fire({
+						icon: 'error',
+						title: 'ERROR',
+						text: e,
+						
+			})
+				
+
+			}
+		})
+
+	</script>
+
+  
+
+
+
+	</body>
+</html>
+
